@@ -1,0 +1,75 @@
+.studentsContainer {
+  flex: 1;
+  background-color: lightgray;
+}
+.title {
+  height: 60px;
+  line-height: 60px;
+  padding-left: 24px;
+  font-weight: 900;
+  font-size: 20px;
+  background-color: white;
+}
+.content {
+ padding: 12px 80px 24px 80px;
+}
+
+.content .searchPanel {
+  background-color: white;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  min-width: 680px;
+}
+.content .searchPanel .single {
+  margin-left: 20px;
+  width: 24%;
+  min-width: 150px;
+}
+.select {
+  width: 100%;
+  height: 30px;
+}
+.searchPanel button {
+  margin-left: 20px;
+  width: 60px;
+  height: 30px;
+  margin-top: 16px;
+  background: white;
+}
+.noneborderSelect {
+  border: none;
+  margin-top: 16px;
+  margin-left: 20px;
+}
+#mytable {
+  width: 100%;
+  min-width: 680px;
+  margin-top: 20px;
+  background-color: white;
+}
+caption {
+  text-align: left;
+  background-color: white;
+  border-bottom: 2px solid lightgray;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+}
+caption div {
+  display: inline-block;
+}
+
+#mytable th {
+  text-align: left;
+  padding-left: 12px;
+}
+#mytable td {
+  padding-left: 12px;
+}
+
+#mytable tr {
+  height: 30px;
+  border: 1px solid red;
+}
