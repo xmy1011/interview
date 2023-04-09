@@ -58,7 +58,14 @@ caption {
   padding-left: 20px;
 }
 caption div {
-  display: inline-block;
+  float: right;
+  margin-right: 20px;
+}
+caption div button {
+  margin-left: 20px;
+  background-color: #252FD4;
+  height: 30px;
+  color: white;
 }
 
 #mytable th {
@@ -71,5 +78,30 @@ caption div {
 
 #mytable tr {
   height: 30px;
-  border: 1px solid red;
+}
+
+table,table tr th, table tr td { 
+  border-bottom:2px solid #ccc;
+}
+.filter {
+  position: relative;
+  display: inline-block;
+  height: 17px;
+  width: 8px;
+  vertical-align: bottom;
+  margin-left: 2px;
+}
+.filter::before, .filter::after {
+  content: '';
+  position: absolute;
+  border: 4px solid;
+}
+
+.filter::before {
+  border-color: transparent transparent #777 transparent;
+}
+
+.filter::after {
+  bottom: 0;
+  border-color:  #777 transparent transparent transparent;
 }
