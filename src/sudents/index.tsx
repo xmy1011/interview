@@ -49,6 +49,7 @@ const Students = () => {
     }
   }
 
+  // 处理三个筛选条件
   useEffect(() => {
     if(statusFilter === 'all' && gradeFilter === 'all' && nameFilter === 'all'){
       setStudata(jsonData.data);
@@ -86,7 +87,7 @@ const Students = () => {
             <div className='single'>
               <div>Status</div>
               <select className='select'  name="status" value={statusFilter}>
-                <option value={'all'} key={'all_status'}>all</option>
+                <option value={'all'} key={'all_status'}>ALL</option>
                 <option value={'Active'} key={"Active"}>Active</option>
                 <option value={'no_Active'} key={"no_Active"}>no_Active</option>
               </select>
@@ -103,7 +104,7 @@ const Students = () => {
             <div className='single'>
               <div>Name</div>
               <select className='select' name="name" value={nameFilter}>
-                <option value={'all'} key={'all_name'}>All</option>
+                <option value={'all'} key={'all_name'}>ALL</option>
                 <option value={'zhang,san'} key={'zhang,san'}>zhang,san</option>
                 <option value={'li,si'} key={'li,si'}>li,si</option>
                 <option value={'wang'} key={'wang'}>wang</option>

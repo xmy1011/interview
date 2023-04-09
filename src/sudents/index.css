@@ -20,7 +20,7 @@
   height: 80px;
   display: flex;
   align-items: center;
-  min-width: 680px;
+  min-width: 700px;
 }
 .content .searchPanel .single {
   margin-left: 20px;
@@ -45,7 +45,7 @@
 }
 #mytable {
   width: 100%;
-  min-width: 680px;
+  min-width: 700px;
   margin-top: 20px;
   background-color: white;
 }

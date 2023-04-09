@@ -1,6 +1,7 @@
 .navs {
   background-color: darkgreen;
-  padding: 12px 0;
+  height: 40px;
+  line-height: 40px;
 }
 .navs span{
   color: white;
@@ -10,6 +11,11 @@
 }
 .navs a {
   text-decoration: none;
-  padding: 0 24px;
+  padding: 12px 24px;
   color: azure;
+}
+.active {
+  background-color: darkgray;
+  opacity: 0.5;
+  color: red !important;
 }

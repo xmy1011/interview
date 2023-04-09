@@ -9,9 +9,9 @@ function App() {
     <Routes>
     {/* <router-view> */}
       <Route path="/" element={<Home />} >
-        <Route path="classes" element={<>ddd</>}></Route>
+        <Route path="classes" element={<>classes</>}></Route>
         <Route path="students" element={<Students />}></Route>
-        <Route path="groups" element={<div>热榜</div>}></Route>
+        <Route path="groups" element={<div>groups</div>}></Route>
       </Route>
     </Routes>
   </BrowserRouter>
