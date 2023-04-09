@@ -12,7 +12,7 @@ interface Stu {
 }
 
 type status = 'Active' | 'no_Active' | 'all';
-type grade = '1' | '2' | 'all';
+type grade = 1 | 2 | 'all';
 type name = 'zhang,san' | 'li,si' | 'wang' | 'all';
 
 
@@ -34,36 +34,58 @@ const Students = () => {
     setStudata(jsonData.data)
   },[])
 
-  useEffect(() => {
-    const newData = [...stuData].filter((item) => {
-     
-    })
-  }, [statusFilter, gradeFilter,nameFilter]);
-
   // 处理 Id 排序
   const handleIdSort = () => {
     if(idSort === "acs"){
       // 对其做降序排列
       const descSort = [...stuData].sort((item1, item2) => item2.id - item1.id);
       setStudata(descSort);
-      setIdSort('desc')
+      setIdSort('desc');
     } else {
       // 对其做升序排列
       const acsSort = [...stuData].sort((item1, item2) => item1.id - item2.id);
       setStudata(acsSort);
-      setIdSort('acs')
+      setIdSort('acs');
     }
   }
+
+  useEffect(() => {
+    if(statusFilter === 'all' && gradeFilter === 'all' && nameFilter === 'all'){
+      setStudata(jsonData.data);
+    } else {
+      let newData = [...jsonData.data]
+        .filter((item) => statusFilter === 'all' ? true : item.status === statusFilter)
+        .filter((item) => gradeFilter === 'all' ? true : item.grade.toString() === gradeFilter.toString())
+        .filter((item) => nameFilter === 'all' ? true : item.domicile === nameFilter);
+      setStudata(newData);
+    }
+  }, [statusFilter, gradeFilter, nameFilter]);
 
 
   return (
     <div className='studentsContainer'>
       <div className='title'>Student List</div>
       <div className='content'>
-          <form className='searchPanel'>
+          <form className='searchPanel'
+           onChange={(e ) => {
+            const target = e.target as HTMLSelectElement;
+            if(target.name === 'status'){
+              setStatusFilter(target.value as status);
+            }else if(target.name === 'grade'){
+              setGradeFilter(target.value as grade);
+            }else if(target.name === 'name'){
+              setNameFilter(target.value as name);
+            }
+            }}
+            onReset={() => {
+              setStatusFilter('all');
+              setGradeFilter('all');
+              setNameFilter("all");
+            }}
+          >
             <div className='single'>
               <div>Status</div>
-              <select className='select' onChange={(e) => {setStatusFilter(e.target.value as status)}} name="status" value={statusFilter}>
+              <select className='select'  name="status" value={statusFilter}>
                 <option value={'all'} key={'all_status'}>all</option>
                 <option value={'Active'} key={"Active"}>Active</option>
                 <option value={'no_Active'} key={"no_Active"}>no_Active</option>
@@ -71,7 +93,7 @@ const Students = () => {
             </div>
             <div className='single'>
               <div>Grade</div>
-              <select className='select' name="grade" onChange={(e) => {setGradeFilter(e.target.value as grade)}} value={gradeFilter}>
+              <select className='select' name="grade" value={gradeFilter}>
                 <option value={'all'} key={'all_grage'}>ALL</option>
                 <option value={1} key={1}>1</option>
                 <option value={2} key={2}>2</option>
@@ -80,18 +102,14 @@ const Students = () => {
             </div>
             <div className='single'>
               <div>Name</div>
-              <select className='select' name="name" onChange={(e) => {setNameFilter(e.target.value as name)}} value={nameFilter}>
+              <select className='select' name="name" value={nameFilter}>
                 <option value={'all'} key={'all_name'}>All</option>
                 <option value={'zhang,san'} key={'zhang,san'}>zhang,san</option>
                 <option value={'li,si'} key={'li,si'}>li,si</option>
                 <option value={'wang'} key={'wang'}>wang</option>
               </select>
             </div> 
-            <button onClick={() => {
-              setStatusFilter('all');
-              setGradeFilter('all');
-              setNameFilter("all");
-            }}>Reset</button>
+            <button type='reset'>Reset</button>
             <select className='noneborderSelect'>
               <option value={'more1'} key={'more1'}>More filters</option>
               <option value={'more2'} key={'more2'}>More filters2</option>
